@@ -8,6 +8,8 @@ $listing_price = homey_get_price();
 $rating = homey_option('rating');
 $total_rating = get_post_meta( $post->ID, 'listing_total_rating', true );
 $min_hours = get_post_meta($post->ID, 'homey_min_book_hours', true);
+ 
+$baths          = get_post_meta( get_the_ID(), $homey_prefix.'baths', true );
 ?>
 <div class="title-section">
     <div class="block block-top-title">
@@ -15,10 +17,10 @@ $min_hours = get_post_meta($post->ID, 'homey_min_book_hours', true);
             <?php get_template_part('template-parts/breadcrumb'); ?>
             <h1 class="listing-title">
                 <?php the_title(); ?> <?php homey_listing_featured(get_the_ID()); ?>    
-                <span class="item-price" style="text-align:center; float: right; font-weight: 600;"> 
+                <span class="listing-title" style="  float: left; font-weight: 400; font-size: 14px;"> 
 					<?php 	
                     $beds       = homey_get_listing_data('beds');
-					echo '&nbsp;&nbsp;<i class="fas fa-users"></i> ' .$beds. " Total Capacity"?>  
+					echo '<i class="fas fa-users"></i> ' .$beds. " (100%)/".$baths   ." (50%)"?>     
 					</span>
             </h1>
          
