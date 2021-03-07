@@ -155,12 +155,15 @@ for ($halfhour = $start_hour; $halfhour <= $end_hour; $halfhour = $halfhour+30*6
 <div class="sidebar-booking-module-footer">
 	<div class="block-body-sidebar">
 
-		<?php if(homey_option('detail_favorite') != 0) { ?>
+		<?php 
+		$video_url = homey_get_listing_data('video_url');
+		if(homey_option('detail_favorite') != 0) { ?>
 		<button type="button" data-listid="<?php echo intval($post->ID); ?>" class="add_fav btn btn-full-width btn-grey-outlined"><i class="fa <?php echo esc_attr($heart); ?>" aria-hidden="true"></i> <?php echo esc_attr($favorite); ?></button>
 		<?php } ?>
 		
+		
 		<?php if(homey_option('detail_contact_form') != 0 && homey_option('hide-host-contact') !=1 ) { ?>
-		<button type="button" data-toggle="modal" data-target="#modal-contact-host" class="btn btn-full-width btn-grey-outlined"><?php echo esc_attr($homey_local['pr_cont_host']); ?></button>
+	<a href="<?php echo $video_url?>"><button type="button" class="btn btn-full-width btn-grey-outlined"><?php echo esc_attr($homey_local['pr_cont_host']); ?></button></a>	
 		<?php } ?>
 		
 		<?php if(homey_option('print_button') != 0) { ?>
