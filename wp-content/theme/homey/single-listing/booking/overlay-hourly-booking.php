@@ -145,7 +145,11 @@ for ($halfhour = $start_hour; $halfhour <= $end_hour; $halfhour = $halfhour+30*6
 <div class="overlay-booking-btn visible-sm visible-xs">
 	<div class="pull-left">
 		<div class="overlay-booking-price">
-			<?php echo homey_formatted_price($listing_price, false, false); ?><span><?php echo esc_attr($price_separator); ?><?php echo homey_get_price_label();?></span>
+		<?php 	
+		$min_hours = get_post_meta($post->ID, 'homey_min_book_hours', true);
+					echo homey_formatted_price($min_hours*$listing_price, false, false); ?><span><?php echo esc_attr($price_separator);
+					 
+					?><?php echo $min_hours." ".homey_get_price_label();?></span>
 		</div>
 		<?php 
         if($rating && ($total_rating != '' && $total_rating != 0 ) ) { ?>
